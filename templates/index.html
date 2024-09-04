@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Inventory Management System</h1>
+    <form action="/add" method="post">
+        <h2>Add Item</h2>
+        <label for="name">Item Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        <button type="submit">Add Item</button>
+    </form>
+
+    <form action="/remove" method="post">
+        <h2>Remove Item</h2>
+        <label for="name">Item Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        <button type="submit">Remove Item</button>
+    </form>
+
+    <h2>Inventory List</h2>
+    <ul>
+        {% for item, quantity in inventory.items() %}
+            <li>{{ item }}: {{ quantity }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
